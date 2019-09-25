@@ -5,24 +5,35 @@
  */
 package logic;
 
+import Persistence.IQoutesMapper;
+import Persistence.QoutesMapper;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author Alex
  */
 public class Qoutes {
     
-    private String quotes;
+    private List<String> qoutes;
     
-    public Qoutes(String quotes){
-        this.quotes = quotes;
+    public Qoutes(){
+        IQoutesMapper qoutes = new QoutesMapper();
+        this.qoutes = qoutes.getAllQoutes();
     }
 
-    public String getQuotes() {
-        return quotes;
+    public void AddQuotes(String quotes) {
+        this.qoutes.add(quotes);
     }
-
-    public void setQuotes(String quotes) {
-        this.quotes = quotes;
+    
+    public String getRandomQoute(){
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(qoutes.size());
+        if(randomNumber == qoutes.size()){
+            randomNumber--;
+        }
+        return qoutes.get(randomNumber);
     }
     
 }

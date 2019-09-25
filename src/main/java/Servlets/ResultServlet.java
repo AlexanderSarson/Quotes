@@ -39,7 +39,8 @@ public class ResultServlet extends HttpServlet {
             out.println("<title>Servlet ResultServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ResultServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Dagens citat er:</h1>");
+            out.println("<h2>"+ request.getAttribute("qoute") +"</h2>");
             out.println("</body>");
             out.println("</html>");
         }

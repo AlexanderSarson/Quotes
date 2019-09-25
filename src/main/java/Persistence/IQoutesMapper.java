@@ -13,5 +13,5 @@ import logic.Qoutes;
  * @author Alex
  */
 public interface IQoutesMapper {
-    public List<Qoutes> getAllQoutes();
+    public List<String> getAllQoutes();
 }

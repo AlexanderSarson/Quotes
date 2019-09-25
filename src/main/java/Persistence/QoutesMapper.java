@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import logic.Qoutes;
 
 /**
@@ -18,8 +19,7 @@ import logic.Qoutes;
 public class QoutesMapper implements IQoutesMapper{
 
     @Override
-    public List<Qoutes> getAllQoutes() {
-        List<Qoutes> qoutes = new ArrayList();
+    public List<String> getAllQoutes() {
         String sql = "SELECT * FROM qoutes";
         ResultSet rs = null;
         try{
@@ -27,11 +27,10 @@ public class QoutesMapper implements IQoutesMapper{
         } catch (SQLException e){
             e.printStackTrace();
         }
-        Qoutes qoute = null;
+        List<String> qoutes = new ArrayList();
         try{
             while(rs.next()){
-                String qou = rs.getString("qoutes");
-                qoute = new Qoutes(qou);
+                String qoute = rs.getString("qoutes");
                 qoutes.add(qoute);
             }
         } catch (SQLException e){
@@ -40,12 +39,10 @@ public class QoutesMapper implements IQoutesMapper{
         return qoutes;
     }
     
+    
+    
     public static void main(String[] args) {
-        IQoutesMapper test = new QoutesMapper();
-        List<Qoutes> qoutes = test.getAllQoutes();
-        for (Qoutes qoute : qoutes) {
-            System.out.println(qoute.getQuotes());
-        }
+  
     }
     
 }

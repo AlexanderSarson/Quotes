@@ -5,13 +5,18 @@
  */
 package Servlets;
 
+import Persistence.IQoutesMapper;
+import Persistence.QoutesMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logic.Qoutes;
 
 /**
  *
@@ -31,17 +36,13 @@ public class FrontServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Qoutes qoutes = new Qoutes();
+        String qoute = qoutes.getRandomQoute();
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet FrontServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet FrontServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            request.setAttribute("qoute", qoute);
+            RequestDispatcher rd = request.getRequestDispatcher("ResultServlet");
+            rd.forward(request, response);
         }
     }
 
