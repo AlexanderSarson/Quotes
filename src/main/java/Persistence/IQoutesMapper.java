@@ -5,10 +5,13 @@
  */
 package Persistence;
 
+import java.util.List;
+import logic.Qoutes;
+
 /**
  *
  * @author Alex
  */
-public class IQoutesMapper {
-    
+public interface IQoutesMapper {
+    public List<Qoutes> getAllQoutes();
 }

@@ -5,10 +5,32 @@
  */
 package Persistence;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author Alex
  */
 public class DB {
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/qoutesdb";
+    private static final String USER = "root";
+    private static final String PASSWORD = "Nu66ets";
+    
+    public static Connection conn = null;
+    
+    public static Connection getConnection(){
+        if(conn == null){
+            try{
+                Class.forName(DRIVER);
+                conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (ClassNotFoundException | SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return conn;
+    }
     
 }
