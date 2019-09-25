@@ -22,10 +22,6 @@ public class Qoutes {
         IQoutesMapper qoutes = new QoutesMapper();
         this.qoutes = qoutes.getAllQoutes();
     }
-
-    public void AddQuotes(String quotes) {
-        this.qoutes.add(quotes);
-    }
     
     public String getRandomQoute(){
         Random rand = new Random();
