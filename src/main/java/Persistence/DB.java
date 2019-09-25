@@ -16,8 +16,8 @@ import java.sql.SQLException;
 public class DB {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/qoutesdb";
-    private static final String USER = "root";
-    private static final String PASSWORD = "Nu66ets";
+    private static final String USER = "dev";
+    private static final String PASSWORD = "dev";
     
     public static Connection conn = null;
     
